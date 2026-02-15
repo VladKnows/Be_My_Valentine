@@ -1,0 +1,175 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #000;
+    font-family: 'VT323', monospace;
+}
+
+#game-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    transition: background-image 0.5s ease-in-out;
+}
+
+/* Efectul de Splash (apă) */
+#splash-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 100, 255, 0.5); /* Albastru */
+    opacity: 0;
+    pointer-events: none;
+    z-index: 99;
+    transition: opacity 0.1s;
+}
+
+#splash-overlay.active {
+    opacity: 1;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrează vertical conținutul */
+    align-items: center;
+    height: 100vh;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+}
+
+/* Pisica - mai sus */
+.character-area {
+    flex-grow: 1; /* Împinge pisica să ocupe spațiul liber de sus */
+    display: flex;
+    align-items: center; /* O centrează vertical în spațiul ei */
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.character-area img {
+    height: 350px; /* Mai mare */
+    image-rendering: pixelated;
+}
+
+/* Zona de obiecte (mic dejun) */
+#item-display {
+    margin-bottom: 20px;
+    z-index: 10;
+}
+#item-display img {
+    max-height: 150px;
+    border: 2px solid white;
+    background: black;
+    padding: 10px;
+}
+
+/* Caseta Text */
+.dialogue-box {
+    width: 80%;
+    max-width: 800px;
+    height: 160px;
+    background-color: black;
+    border: 4px solid white;
+    color: white;
+    padding: 20px;
+    font-size: 26px;
+    position: relative;
+    box-shadow: 0 0 0 4px black;
+    margin-bottom: 30px; /* Distanță față de marginea de jos */
+    flex-shrink: 0; /* Nu se micșorează */
+}
+
+.char-name {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #ffff00;
+    text-transform: uppercase;
+}
+
+#dialogue-text {
+    margin: 0;
+    line-height: 1.4;
+    min-height: 60px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-around; /* Distanțare egală */
+    flex-wrap: wrap; /* Permite trecerea pe rând nou dacă sunt multe */
+    margin-top: 20px;
+    gap: 15px;
+}
+
+.option {
+    color: gray;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.option.selected {
+    color: #ffff00;
+    text-shadow: 2px 2px #ff0000;
+}
+
+.option.selected::before {
+    content: "❤️ ";
+}
+
+.hidden { display: none !important; }
+
+#next-indicator {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 16px;
+    animation: blink 1s infinite;
+}
+
+#hockey-canvas {
+    background: #222; /* Masă neagră/gri închis */
+    border: 5px solid #ff0055; /* Margine neon */
+    box-shadow: 0 0 20px #ff0055;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    cursor: none; /* Ascundem mouse-ul când e deasupra jocului */
+    z-index: 50;
+    position: absolute; /* Îl punem peste pisică */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%); /* Centrare */
+}
+
+/* Stil comun pentru canvas-uri */
+canvas {
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%); /* Centrat */
+    z-index: 50;
+    background-color: #333;
+}
+
+#jump-canvas {
+    border: 4px solid #00ff00; /* Verde neon */
+    background-color: #222;
+}
+
+#basket-canvas {
+    border: 4px solid #ff8800; /* Portocaliu */
+    background-color: #222;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}

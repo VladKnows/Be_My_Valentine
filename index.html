@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will you be my Valentine?</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="game-background"></div>
+
+    <div id="splash-overlay"></div>
+
+    <div class="game-container">
+        <canvas id="hockey-canvas" width="300" height="400" class="hidden"></canvas>
+
+        <canvas id="jump-canvas" width="600" height="200" class="hidden"></canvas>
+        
+        <canvas id="basket-canvas" width="400" height="400" class="hidden"></canvas>
+        
+        <div class="character-area">
+            <img id="cat-image" src="src/cat_closed.png" alt="Cat">
+        </div>
+
+        <div id="item-display" class="hidden">
+            <img id="item-image" src="" alt="Item">
+        </div>
+
+        <div class="dialogue-box">
+            <div class="char-name">CAT</div>
+            <p id="dialogue-text"></p>
+            <div id="next-indicator" class="hidden">PRESS [ENTER]</div>
+            <div id="options-container" class="options hidden"></div>
+        </div>
+    </div>
+
+    <audio id="sfx-wolves" src="src/wolves.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
